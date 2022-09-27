@@ -5,93 +5,64 @@
         </div>
         <div id="projecten" class="content">
             <h2>Projecten</h2>
-            <div class="project">
-                <h3>Fox and Waterman</h3>
-                <div class="text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?</p>
-                    <div class="icons">
-                        <img src="../assets/icons/html5.svg" alt="HTML 5 icon">
-                        <img src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
-                        <img src="../assets/icons/js.svg" alt="Javascript icon">
-                        <a class="link" href="#" target="_blank">Bekijk de website</a>
-                    </div>
-                </div>
-                <div class="project-img">
-                    <img src="../assets/projects/project_fox.png" alt="Website Fox and Waterman">
-                </div>
-            </div>
-            <div class="project">
-                <h3>Fox and Waterman</h3>
-                <div class="text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?</p>
-                    <div class="icons">
-                        <img src="../assets/icons/html5.svg" alt="HTML 5 icon">
-                        <img src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
-                        <img src="../assets/icons/js.svg" alt="Javascript icon">
-                        <a class="link" href="#" target="_blank">Bekijk de website</a>
-                    </div>
-                </div>
-                <div class="project-img">
-                    <img src="../assets/projects/project_fox.png" alt="Website Fox and Waterman">
-                </div>
-            </div>
-            <div class="project">
-                <h3>Fox and Waterman</h3>
-                <div class="text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid
-                        suscipit,</p>
-                    <p>
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid
-                        suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid
-                        suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid
-                        suscipit,
-                    </p>
 
-                    <div class="icons">
-                        <img src="../assets/icons/html5.svg" alt="HTML 5 icon">
-                        <img src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
-                        <img src="../assets/icons/js.svg" alt="Javascript icon">
-                        <a class="link" href="#" target="_blank">Bekijk de website</a>
+            <template v-if="!loadDone || !projecten.data">
+                <LoadSpinner />
+            </template>
+
+            <template v-else>
+                <div v-for="project in projecten.data" :key="project.uid" class="project">
+
+                    <PrismicText :field="project.data.title" wrapper="h3" />
+
+                    <div class="text">
+
+                        <PrismicRichText :field="project.data.intro" wrapper="article" />
+
+                        <div class="icons">
+
+                            <img v-show="project.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js">
+                            <img v-show="project.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon">
+                            <img v-show="project.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
+                            <img v-show="project.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon">
+
+                            <RouterLink class="link" :to="'/projecten/' + project.uid" target="_self">
+                                Meer informatie
+                            </RouterLink>
+
+                            <a :href="project.data.github_url" target="_blank">
+                                <img v-show="project.data.github" src="../assets/icons/github.svg"
+                                    alt="Javascript icon">
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="project-img">
+                        <img :src="project.data.cover_img.url.substring(0, project.data.cover_img.url.lastIndexOf('?'))"
+                            alt="Website Fox and Waterman">
                     </div>
                 </div>
-                <div class="project-img">
-                    <img src="../assets/projects/project_fox.png" alt="Website Fox and Waterman">
-                </div>
-            </div>
-            <div class="project">
-                <h3>Fox and Waterman</h3>
-                <div class="text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi quo beatae aliquid suscipit,
-                        officia non earum minima nemo enim nobis cupiditate ut in, atque iusto ad deleniti! Consequatur,
-                        voluptatem?</p>
-                    <div class="icons">
-                        <img src="../assets/icons/html5.svg" alt="HTML 5 icon">
-                        <img src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
-                        <img src="../assets/icons/js.svg" alt="Javascript icon">
-                        <a class="link" href="#" target="_blank">Bekijk de website</a>
-                    </div>
-                </div>
-                <div class="project-img">
-                    <img src="../assets/projects/project_fox.png" alt="Website Fox and Waterman">
-                </div>
-            </div>
+            </template>
+
         </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useAllPrismicDocumentsByType, PrismicText, PrismicRichText } from "@prismicio/vue";
+import LoadSpinner from "./LoadSpinner.vue";
 
+const projecten = ref()
+const loadDone = ref(false)
+
+async function fetchData() {
+    const response = await useAllPrismicDocumentsByType("projecten");
+    projecten.value = response
+    loadDone.value = true
+};
+fetchData()
+console.log(projecten)
 </script>
 
 <style lang="scss" scoped>
@@ -182,7 +153,7 @@ p {
     display: flex;
     flex-direction: column;
 
-    p {
+    :deep(p) {
         line-height: 1.7rem;
         padding-bottom: .5rem;
     }
@@ -196,7 +167,7 @@ p {
     align-items: center;
 
     img[src*="svg"] {
-        height: 2.5rem;
+        height: 2rem;
         filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
     }
 }

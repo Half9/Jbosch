@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    <div class="container">
+    <div class="container container-flex">
       <img src="@/assets/skull.png" alt="Skull" class="skull">
       <div class="mobile-menu-icon">
         <img v-show="!showMenu" src="@/assets/icons/bars.svg" alt="" @click="menuToggle">
@@ -37,7 +37,7 @@ function menuToggle() {
   z-index: 99;
 }
 
-.container {
+.container-flex {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -105,7 +105,7 @@ function menuToggle() {
 .skull {
   margin-left: -15em;
   margin-top: -1.5rem;
-  z-index: 99;
+  z-index: 200;
 
 }
 

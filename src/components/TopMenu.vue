@@ -1,8 +1,16 @@
 <template>
     <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="#overmij">Over mij</a></li>
-        <li><a href="#projecten">Projecten</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+            <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li>
+            <RouterLink to="/#overmij">Over mij</RouterLink>
+        </li>
+        <li>
+            <RouterLink to="/#projecten">Projecten</RouterLink>
+        </li>
+        <li>
+            <RouterLink to="/#contact">Contact</RouterLink>
+        </li>
     </ul>
 </template>

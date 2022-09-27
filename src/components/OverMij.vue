@@ -3,21 +3,16 @@
         <div class="container">
             <div class="grid">
                 <img src="../assets/schilderij_klein.png" alt="Ik op de motor en foto van mijn 3d printer">
-                <div class="papier">
 
-                    <p>Ik heb altijd al een passie gehad met webdesign en desktoppublishing. Als zins ik een kleine
-                        man
-                        was. Toen maakte ik al website en flyers voor familie, vrienden en buren.
-                    </p>
-                    <p>Na jaren lang op de vrachtwagen gezeten te hebben vond ik tijd om mijn passie achteraan te
-                        gaan.
-                    </p>
-                    <p>Heb via het STAP-budget een opleiding Web Development gevolgd. Na deze succesvol afgerond te
-                        hebben,
-                        heb ik mij verder verdiept in het maken van website's</p>
-
+                <div v-if="loadDone" class="papier" style="width: 90%;">
+                    <LoadSpinner />
                 </div>
-                <img src="../assets/schilderij_groot.png" alt="Ik met mijn vrachtwagen.">
+
+                <template v-if="loadDone && siteText.data">
+                    <PrismicRichText :field="siteText.data.data.over_mij_tekst" wrapper="article" class="papier" />
+                </template>
+
+                <img src="../assets/schilderij_groot.png" alt="Ik met mijn oude vrachtwagen.">
             </div>
         </div>
     </div>
@@ -25,7 +20,19 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useSinglePrismicDocument, PrismicRichText } from "@prismicio/vue";
+import LoadSpinner from "./LoadSpinner.vue";
 
+const siteText = ref()
+const loadDone = ref(false)
+
+async function fetchData() {
+    const response = await useSinglePrismicDocument("over_mij");
+    siteText.value = response
+    loadDone.value = true
+};
+fetchData()
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +104,7 @@ img {
     transform: rotate(-2deg);
     margin-right: 1rem;
 
-    p {
+    :deep(p) {
         margin-bottom: 1rem;
         font-size: 1.5rem;
         color: #000;

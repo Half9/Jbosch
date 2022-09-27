@@ -38,6 +38,7 @@
 .footer-top {
     margin-top: -300px;
     height: 693px;
+    z-index: -1;
 }
 
 .footer-bg {

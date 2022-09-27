@@ -5,15 +5,16 @@
 
 <style scoped>
 .loader {
-    border: 12px solid var(--donker-gijs);
+    border: 12px solid #424242;
     border-radius: 50%;
-    border-top: 12px solid var(--paars);
+    border-top: 12px solid #ce6831;
     width: 75px;
     height: 75px;
     -webkit-animation: spin 2s linear infinite;
     /* Safari */
     animation: spin 2s linear infinite;
     margin: 2rem auto;
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.7);
 }
 
 p {

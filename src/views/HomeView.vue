@@ -11,6 +11,3 @@ import OverMij from '../components/OverMij.vue';
 import AllProjects from '../components/AllProjects.vue';
 import FooterContact from '../components/FooterContact.vue';
 </script>
-
-<style scoped lang="scss">
-</style>
