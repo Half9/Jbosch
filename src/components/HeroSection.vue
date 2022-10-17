@@ -82,6 +82,7 @@ import TopMenu from './TopMenu.vue';
     justify-content: center;
     align-items: center;
     margin-bottom: -20px;
+    transform: rotate(2deg);
 }
 
 @media (max-width: 600px) {

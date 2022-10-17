@@ -46,6 +46,7 @@ function menuToggle() {
 .mobile-menu-icon {
   padding-right: 1rem;
   padding-top: 1rem;
+  margin-left: auto;
   z-index: 99;
 
   @media (min-width: 600px) {
@@ -105,7 +106,8 @@ function menuToggle() {
 .skull {
   margin-left: -15em;
   margin-top: -1.5rem;
-  z-index: 200;
+  z-index: 90;
+  position: absolute;
 
 }
 

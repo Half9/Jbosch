@@ -13,8 +13,24 @@
         <div class="title">
             <PrismicText :field="project.data.data.title" wrapper="h2" />
         </div>
-        <main class="container container-push">
-            <PrismicRichText :field="project.data.data.text" wrapper="article" />
+        <!-- <main class="container container-push"> -->
+        <main class="container">
+            <div class="icons">
+                <img v-show="project.data.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js" />
+                <img v-show="project.data.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon" />
+                <img v-show="project.data.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon" />
+                <img v-show="project.data.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon" />
+                <a :href="project.data.data.github_url" target="_blank">
+                    <img v-show="project.data.data.github" src="../assets/icons/github.svg" alt="Javascript icon" />
+                </a>
+                <a v-show="project.data.data.url_website" class="link" :href="project.data.data.url_website"
+                    target="_blank">Naar de website</a>
+            </div>
+
+            <article>
+                <SliceZone :slices="project.data.data.body" :components="components" />
+            </article>
+
         </main>
     </template>
     <FooterContact />
@@ -23,11 +39,13 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { usePrismicDocumentByUID, PrismicText, PrismicRichText } from "@prismicio/vue";
+import { usePrismicDocumentByUID, PrismicText, SliceZone, defineSliceZoneComponents } from "@prismicio/vue";
 import LoadSpinner from "../components/LoadSpinner.vue";
 import TopMenu from "../components/TopMenu.vue";
 import FooterContact from "../components/FooterContact.vue";
 
+import SliceImage from "../components/slice/SliceImage.vue"
+import SliceText from "../components/slice/SliceText.vue"
 
 const route = useRoute();
 const project = ref()
@@ -42,13 +60,16 @@ async function fetchData() {
 
 };
 fetchData()
+
+const components = defineSliceZoneComponents({ plaatje: SliceImage, tekst: SliceText })
+
 console.log(project)
 
 </script>
 
 <style lang="scss" scoped>
 .title {
-    background: url(../src/assets/hero_bottom.png), url(../src/assets/mij_bg_top.png);
+    background: url(../assets/hero_bottom.png), url(../assets/mij_bg_top.png);
     background-repeat: repeat-x, repeat-x;
     background-position: bottom -30px center, top center;
     height: 250px;
@@ -59,7 +80,7 @@ console.log(project)
     box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px;
 
     @media (max-width: 600px) {
-        height: 130px;
+        height: 100%;
         padding-left: 2rem;
 
     }
@@ -99,23 +120,83 @@ h2 {
     @media (max-width: 600px) {
         font-size: 2.5rem;
         word-break: break-word;
+        padding: 1rem 0 1.5rem;
 
     }
 }
 
 main {
+    article {
+        margin-top: 2rem;
+        margin-bottom: 8rem;
 
-    &:deep(p) {
-        line-height: 1.8rem;
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-    }
+        @media (max-width: 600px) {
+            margin-top: 2rem;
 
-    &:deep(.block-img) {
-        text-align: center;
+        }
 
-        img {
-            max-width: 100%;
+
+        &:deep(h2) {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+
+            @media (max-width: 600px) {
+                font-size: 1.3rem;
+                margin-bottom: .3rem;
+            }
+        }
+
+
+        &:deep(.text) {
+            width: 75%;
+            margin: 0 auto;
+
+
+            @media (max-width: 600px) {
+                width: 100%;
+
+            }
+
+            p {
+                line-height: 1.8rem;
+                font-size: 1.2rem;
+                font-weight: 300;
+                margin-bottom: 3.5rem;
+
+                @media (max-width: 600px) {
+                    font-size: 1rem;
+                    margin-bottom: 2rem;
+                }
+
+            }
+        }
+
+        &:deep(a) {
+            text-decoration: none;
+            color: #FFF;
+            font-weight: 600;
+
+            &:hover {
+                color: #ce6831;
+            }
+
+        }
+
+        &:deep(figure) {
+            width: 100%;
+            max-height: 600px;
+            overflow-y: hidden;
+            text-align: center;
+            margin-bottom: 3rem;
+
+            @media (max-width: 600px) {
+                margin-bottom: 2rem;
+            }
+
+            img {
+                max-width: 100%;
+
+            }
         }
     }
 }
@@ -130,7 +211,8 @@ main {
     align-items: center;
     margin-top: -50px;
     position: absolute;
-    z-index: 100;
+    z-index: 99;
+    transform: rotate(2deg);
 }
 
 @media (max-width: 600px) {
@@ -152,6 +234,35 @@ nav {
         text-decoration: none;
         font-weight: 500;
         font-size: 1.2rem;
+    }
+}
+
+.icons {
+    display: flex;
+    gap: 1rem;
+    padding-top: 2rem;
+    align-items: top;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 98;
+    width: 100%;
+
+    img[src*="svg"] {
+        height: 2rem;
+        filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
+    }
+
+    .link {
+        color: #FFF;
+        text-decoration: none;
+        border: 1px solid #FFF;
+        padding: .4rem .6rem;
+
+        &:hover {
+            background-color: #FFF;
+            color: var(--bg);
+            font-weight: 500;
+        }
     }
 }
 </style>

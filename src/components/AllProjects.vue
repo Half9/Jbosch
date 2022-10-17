@@ -13,7 +13,9 @@
             <template v-else>
                 <div v-for="project in projecten.data" :key="project.uid" class="project">
 
-                    <PrismicText :field="project.data.title" wrapper="h3" />
+                    <RouterLink :to="'/projecten/' + project.uid" target="_self">
+                        <PrismicText :field="project.data.title" wrapper="h3" />
+                    </RouterLink>
 
                     <div class="text">
 
@@ -21,10 +23,10 @@
 
                         <div class="icons">
 
-                            <img v-show="project.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js">
-                            <img v-show="project.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon">
-                            <img v-show="project.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon">
-                            <img v-show="project.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon">
+                            <img v-show="project.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js" />
+                            <img v-show="project.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon" />
+                            <img v-show="project.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon" />
+                            <img v-show="project.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon" />
 
                             <RouterLink class="link" :to="'/projecten/' + project.uid" target="_self">
                                 Meer informatie
@@ -32,14 +34,15 @@
 
                             <a :href="project.data.github_url" target="_blank">
                                 <img v-show="project.data.github" src="../assets/icons/github.svg"
-                                    alt="Javascript icon">
+                                    alt="Javascript icon" />
                             </a>
-
                         </div>
                     </div>
                     <div class="project-img">
-                        <img :src="project.data.cover_img.url.substring(0, project.data.cover_img.url.lastIndexOf('?'))"
-                            alt="Website Fox and Waterman">
+                        <RouterLink :to="'/projecten/' + project.uid" target="_self">
+                            <img :src="project.data.cover_img.url.substring(0, project.data.cover_img.url.lastIndexOf('?'))"
+                                alt="Website Fox and Waterman">
+                        </RouterLink>
                     </div>
                 </div>
             </template>
@@ -66,6 +69,12 @@ console.log(projecten)
 </script>
 
 <style lang="scss" scoped>
+a {
+    text-decoration: none;
+    color: #FFF;
+    height: 100%;
+}
+
 h2 {
     font-size: 2.5rem;
     letter-spacing: .4rem;
@@ -76,7 +85,6 @@ h3 {
     font-size: 2rem;
     letter-spacing: .3rem;
     grid-area: title;
-
 }
 
 p {
@@ -154,8 +162,14 @@ p {
     flex-direction: column;
 
     :deep(p) {
-        line-height: 1.7rem;
+        line-height: 1.8rem;
         padding-bottom: .5rem;
+        font-size: 1.2rem;
+
+        @media (max-width: 600px) {
+            font-size: 1rem;
+
+        }
     }
 }
 
