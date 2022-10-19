@@ -13,7 +13,8 @@
             <template v-else>
                 <div v-for="project in projecten.data" :key="project.uid" class="project">
 
-                    <RouterLink :to="'/projecten/' + project.uid" target="_self">
+                    <!-- <RouterLink :to="'/projecten/' + project.uid" target="_self"> -->
+                    <RouterLink :to="{ name: 'Projecten', params: {uid: project.uid} }" target="_self">
                         <PrismicText :field="project.data.title" wrapper="h3" />
                     </RouterLink>
 
@@ -60,7 +61,9 @@ const projecten = ref()
 const loadDone = ref(false)
 
 async function fetchData() {
-    const response = await useAllPrismicDocumentsByType("projecten");
+    const response = await useAllPrismicDocumentsByType("projecten",
+        { orderings: 'my.projecten.order desc' }
+    )
     projecten.value = response
     loadDone.value = true
 };

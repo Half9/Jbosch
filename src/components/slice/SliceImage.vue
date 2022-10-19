@@ -1,20 +1,26 @@
 <template>
-    <figure>
+    <div class="image">
         <a :href="'#' + slice.id">
-            <img :src="slice.primary.image.url.substring(0, slice.primary.image.url.lastIndexOf('?'))"
-                :alt="slice.primary.image.alt">
+            <figure>
+                <img :src="slice.primary.image.url.substring(0, slice.primary.image.url.lastIndexOf('?'))"
+                    :alt="slice.primary.image.alt">
+                <PrismicText v-if="slice.primary.caption.length > 0" :field="slice.primary.caption"
+                    wrapper="figcaption" />
+            </figure>
+
             <div class="icon">
                 <img src="@/assets/icons/vergroot.svg" alt="Vergroot plaatje" />
             </div>
         </a>
+    </div>
 
 
-        <a :id="slice.id" href="#" onclick="window.history.go(-1); return false;" class="lightbox">
-            <span
-                :style="{'background-image': 'url(' + slice.primary.image.url.substring(0, slice.primary.image.url.lastIndexOf('?')) + ')',}">
-            </span>
-        </a>
-    </figure>
+    <a :id="slice.id" href="#" onclick="window.history.go(-1); return false;" class="lightbox">
+        <span
+            :style="{'background-image': 'url(' + slice.primary.image.url.substring(0, slice.primary.image.url.lastIndexOf('?')) + ')',}">
+        </span>
+    </a>
+
 </template>
 
 <script setup>
@@ -23,14 +29,44 @@ defineProps(getSliceComponentProps())
 </script>
 
 <style scoped lang="scss">
-figure {
+.image {
     position: relative;
+    margin-bottom: 3rem;
+
+    figure {
+        width: 100%;
+        max-height: 600px;
+        overflow-y: hidden;
+        text-align: center;
+        margin-block: 6rem;
+
+        @media (max-width: 600px) {
+            margin-block: 2rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        figcaption {
+            position: absolute;
+            height: 2rem;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            font-weight: 400;
+            font-size: .9rem;
+            letter-spacing: .02rem;
+            color: #FFF;
+            font-style: italic;
+            transform: translateY(2.5rem);
+        }
+    }
 
     .icon {
         position: absolute;
         bottom: 1rem;
         right: 1rem;
-        z-index: 98;
         background-color: rgba(0, 0, 0, 0.5);
         padding: 1rem;
         border-radius: 1rem;

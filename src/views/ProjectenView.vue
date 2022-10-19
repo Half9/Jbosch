@@ -57,7 +57,6 @@ async function fetchData() {
     const response = await usePrismicDocumentByUID("projecten", uid);
     project.value = response
     loadDone.value = true
-
 };
 fetchData()
 
@@ -151,10 +150,8 @@ main {
             width: 75%;
             margin: 0 auto;
 
-
             @media (max-width: 600px) {
                 width: 100%;
-
             }
 
             p {
@@ -180,23 +177,6 @@ main {
                 color: #ce6831;
             }
 
-        }
-
-        &:deep(figure) {
-            width: 100%;
-            max-height: 600px;
-            overflow-y: hidden;
-            text-align: center;
-            margin-bottom: 3rem;
-
-            @media (max-width: 600px) {
-                margin-bottom: 2rem;
-            }
-
-            img {
-                max-width: 100%;
-
-            }
         }
     }
 }
