@@ -1,11 +1,8 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import prismic from "./prismic";
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import prismic from './prismic'
 
-import "./style.css";
+import './style.css'
 
-createApp(App)
-.use(router)
-.use(prismic) 
-.mount("#app");
+createApp(App).use(router).use(prismic).mount('#app')

@@ -1,15 +1,13 @@
 <template>
-    <div class="container">
-        <h2>Kan niet vinden</h2>
-    </div>
+  <div class="container">
+    <h2>Kan niet vinden</h2>
+  </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 h2 {
-    text-align: center;
+  text-align: center;
 }
 </style>

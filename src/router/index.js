@@ -5,20 +5,20 @@ import Projecten from '@/views/ProjectenView.vue'
 import NotFound from '@/views/NotFound.vue'
 
 export const routes = [
-  { 
-    path: '/', 
-    name: 'Home', 
-    component: Home 
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
   },
-  { 
-    path: '/projecten/:uid', 
-    name: 'Projecten', 
+  {
+    path: '/projecten/:uid',
+    name: 'Projecten',
     component: Projecten,
   },
-  { 
-    path: '/:path(.*)', 
-    name: 'NotFound', 
-    component: NotFound 
+  {
+    path: '/:path(.*)',
+    name: 'NotFound',
+    component: NotFound,
   },
 ]
 
@@ -37,22 +37,22 @@ const router = new createRouter({
       return { top: -1 }
     }
   },
-});
+})
 
 router.beforeEach((to, form, next) => {
   let pageTitle = `JBosch - ${to.name}`
 
-    function titleFirstLetterUppercase(string){
-      return string.charAt(0).toUpperCase() + string.slice(1)
-    }
+  function titleFirstLetterUppercase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
 
   if (to.params.uid) {
-    let uid = titleFirstLetterUppercase(to.params.uid.replace(/-/g,' '))
+    let uid = titleFirstLetterUppercase(to.params.uid.replace(/-/g, ' '))
     pageTitle += ` - ${uid}`
   }
 
   document.title = pageTitle
   next()
-});
+})
 
 export default router

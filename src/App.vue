@@ -1,10 +1,18 @@
 <template>
   <div class="top-bar">
     <div class="container container-flex">
-      <img src="@/assets/skull.png" alt="Skull" class="skull">
+      <img src="@/assets/skull.png" alt="Skull" class="skull" />
       <div class="mobile-menu-icon">
-        <img v-show="!showMenu" src="@/assets/icons/bars.svg" alt="" @click="menuToggle">
-        <img v-show="showMenu" src="@/assets/icons/skull.svg" alt="" @click="menuToggle">
+        <img
+          v-show="!showMenu"
+          src="@/assets/icons/bars.svg"
+          alt=""
+          @click="menuToggle" />
+        <img
+          v-show="showMenu"
+          src="@/assets/icons/skull.svg"
+          alt=""
+          @click="menuToggle" />
       </div>
     </div>
     <div :class="[showMenu ? 'mobile-menu-open' : '', 'mobile-menu']">
@@ -15,16 +23,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import TopMenu from './components/TopMenu.vue';
+import { ref } from 'vue'
+import TopMenu from './components/TopMenu.vue'
 
 const showMenu = ref(false)
 
 function menuToggle() {
   showMenu.value = !showMenu.value
-};
-
-
+}
 </script>
 
 <style scoped lang="scss">
@@ -55,7 +61,8 @@ function menuToggle() {
 
   img {
     height: 2rem;
-    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
+    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg)
+      brightness(108%) contrast(101%);
   }
 }
 
@@ -64,7 +71,8 @@ function menuToggle() {
   top: 65px;
   left: 0;
   z-index: 50;
-  background: url(../src/assets/hero_bottom.png), url(../src/assets/mij_bg_top.png);
+  background: url(../src/assets/hero_bottom.png),
+    url(../src/assets/mij_bg_top.png);
   background-repeat: repeat-x, repeat-x;
   background-position: bottom -30px center, top center;
   width: 100%;
@@ -82,8 +90,7 @@ function menuToggle() {
     flex-direction: column;
     align-items: center;
     list-style: none;
-    gap: .5rem;
-
+    gap: 0.5rem;
 
     &:deep(li) {
       padding: 1rem;
@@ -94,7 +101,6 @@ function menuToggle() {
         text-decoration: none;
         font-size: 1.3rem;
       }
-
     }
   }
 }
@@ -108,7 +114,6 @@ function menuToggle() {
   margin-top: -1.5rem;
   z-index: 90;
   position: absolute;
-
 }
 
 @media (max-width: 1600px) {

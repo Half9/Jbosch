@@ -1,10 +1,10 @@
-import { createPrismic } from "@prismicio/vue";
+import { createPrismic } from '@prismicio/vue'
 
-import { linkResolver } from "./linkResolver";
+import { linkResolver } from './linkResolver'
 
 const prismic = createPrismic({
-  endpoint: "jbosch",
+  endpoint: 'jbosch',
   linkResolver,
-});
+})
 
-export default prismic;
+export default prismic

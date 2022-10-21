@@ -1,7 +1,7 @@
 export function linkResolver(document) {
-  if (document.type === "projecten") {
-    return "/projecten/" + document.uid;
+  if (document.type === 'projecten') {
+    return '/projecten/' + document.uid
   }
 
-  return "/";
+  return '/'
 }
