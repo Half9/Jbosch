@@ -90,22 +90,6 @@ import TopMenu from './TopMenu.vue'
   }
 }
 
-nav {
-  ul {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    list-style: none;
-  }
-
-  &:deep(a) {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.2rem;
-  }
-}
-
 h1 {
   font-size: 4rem;
   margin-bottom: 1rem;

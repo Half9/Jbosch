@@ -15,33 +15,14 @@
     </div>
     <main class="container">
       <div class="icons">
-        <img
-          v-show="project.data.data.vue"
-          src="../assets/icons/vuejs.svg"
-          alt="Vue js" />
-        <img
-          v-show="project.data.data.html"
-          src="../assets/icons/html5.svg"
-          alt="HTML 5 icon" />
-        <img
-          v-show="project.data.data.css"
-          src="../assets/icons/css3-alt.svg"
-          alt="CSS 3 icon" />
-        <img
-          v-show="project.data.data.javascript"
-          src="../assets/icons/js.svg"
-          alt="Javascript icon" />
+        <img v-show="project.data.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js" />
+        <img v-show="project.data.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon" />
+        <img v-show="project.data.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon" />
+        <img v-show="project.data.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon" />
         <a :href="project.data.data.github_url" target="_blank">
-          <img
-            v-show="project.data.data.github"
-            src="../assets/icons/github.svg"
-            alt="Github icon" />
+          <img v-show="project.data.data.github" src="../assets/icons/github.svg" alt="Github icon" />
         </a>
-        <a
-          v-show="project.data.data.url_website"
-          class="link"
-          :href="project.data.data.url_website"
-          target="_blank">
+        <a v-show="project.data.data.url_website" class="link" :href="project.data.data.url_website" target="_blank">
           Naar de website
         </a>
       </div>
@@ -49,26 +30,16 @@
       <article>
         <SliceZone :slices="project.data.data.body" :components="components" />
       </article>
-      <div
-        v-show="project.data.data.url_website || project.data.data.github"
-        class="icons-bottom">
+      <div v-show="project.data.data.url_website || project.data.data.github" class="icons-bottom">
         <span v-show="project.data.data.vue" class="link">
           <img src="../assets/icons/vuejs.svg" alt="Vue js" />
           Vue 3
         </span>
-        <a
-          v-show="project.data.data.github"
-          :href="project.data.data.github_url"
-          target="_blank"
-          class="link">
+        <a v-show="project.data.data.github" :href="project.data.data.github_url" target="_blank" class="link">
           <img src="../assets/icons/github.svg" alt="Github icon" />
           Bekijk op Github
         </a>
-        <a
-          v-show="project.data.data.url_website"
-          class="link"
-          :href="project.data.data.url_website"
-          target="_blank">
+        <a v-show="project.data.data.url_website" class="link" :href="project.data.data.url_website" target="_blank">
           <img src="../assets/icons/Site.svg" alt="Site icon" />
           Naar de website
         </a>
@@ -237,22 +208,6 @@ main {
   }
 }
 
-nav {
-  ul {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    list-style: none;
-  }
-
-  &:deep(a) {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.2rem;
-  }
-}
-
 .icons {
   display: flex;
   gap: 1rem;
@@ -265,8 +220,7 @@ nav {
 
   img[src*='svg'] {
     height: 2rem;
-    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg)
-      brightness(108%) contrast(101%);
+    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
   }
 
   .link {
@@ -291,8 +245,7 @@ nav {
 
   img[src*='svg'] {
     height: 2rem;
-    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg)
-      brightness(108%) contrast(101%);
+    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
   }
 
   .link {
