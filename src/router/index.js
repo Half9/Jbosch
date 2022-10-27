@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/HomeView.vue'
 import Projecten from '@/views/ProjectenView.vue'
 import NotFound from '@/views/NotFound.vue'
+import FormSucces from '@/views/SuccesFormSubmit.vue'
 
 export const routes = [
   {
@@ -19,6 +20,11 @@ export const routes = [
     path: '/:path(.*)',
     name: 'NotFound',
     component: NotFound,
+  },
+  {
+    path: '/formsucces',
+    name: 'FormSucces',
+    component: FormSucces,
   },
 ]
 

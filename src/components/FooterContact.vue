@@ -6,14 +6,10 @@
       <h2>Contact</h2>
       <div class="footer">
         <div class="form-bg">
-          <form name="contact" method="POST" netlify>
+          <form name="contact" action="/formsucces" method="POST" data-netlify="true">
             <input type="text" name="name" placeholder="Naam" required />
             <input type="email" name="email" placeholder="Email" required />
-            <textarea
-              name="message"
-              placeholder="Bericht"
-              rows="8"
-              required></textarea>
+            <textarea name="message" placeholder="Bericht" rows="8" required></textarea>
             <button type="submit">Verstuur</button>
           </form>
         </div>
