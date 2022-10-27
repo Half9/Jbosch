@@ -40,7 +40,7 @@
           Bekijk op Github
         </a>
         <a v-show="project.data.data.url_website" class="link" :href="project.data.data.url_website" target="_blank">
-          <img src="../assets/icons/Site.svg" alt="Site icon" />
+          <img src="../assets/icons/site.svg" alt="Site icon" />
           Naar de website
         </a>
       </div>
