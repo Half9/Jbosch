@@ -1,7 +1,6 @@
-# Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# ![Jbosch logo](https://raw.githubusercontent.com/Half9/Jbosch/db56ac06eccbdfd2094ce2f451b2691544d41937/src/assets/jbosch_logo.svg?token=AA4CZ4EJMF6R4OGVIVVHRZTDLPNX4)
 
-## Recommended IDE Setup
+Neem een kijkje achter de schermen en lees meer over hoe en waarom ik deze site zo gemaakt heb. De site is gemaakt met Vue 3 en Prismic.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+[Kijk hier voor meer informatie](https://jbosch.dev/projecten/jimmy-van-den-bosch-portfolio)
