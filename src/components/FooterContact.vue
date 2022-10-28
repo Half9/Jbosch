@@ -6,7 +6,7 @@
       <h2>Contact</h2>
       <div class="footer">
         <div class="form-bg">
-          <form name="Contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/formsucces">
+          <form name="Contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/succes">
             <input type="hidden" name="form-name" value="Contact" />
             <input type="text" name="name" placeholder="Naam" required />
             <input type="email" name="email" placeholder="Email" required />
