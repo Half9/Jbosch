@@ -10,5 +10,11 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <form name="Contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/succes" hidden>
+      <input type="text" name="name" placeholder="Naam" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="message" placeholder="Bericht" rows="8" required></textarea>
+    <button type="submit">Verstuur</button>
+</form>
   </body>
 </html>

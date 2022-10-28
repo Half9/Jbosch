@@ -11,14 +11,9 @@
       </template>
 
       <template v-else>
-        <div
-          v-for="project in projecten.data"
-          :key="project.uid"
-          class="project">
+        <div v-for="project in projecten.data" :key="project.uid" class="project">
           <!-- <RouterLink :to="'/projecten/' + project.uid" target="_self"> -->
-          <RouterLink
-            :to="{ name: 'Projecten', params: { uid: project.uid } }"
-            target="_self">
+          <RouterLink :to="{ name: 'Projecten', params: { uid: project.uid } }" target="_self">
             <PrismicText :field="project.data.title" wrapper="h3" />
           </RouterLink>
 
@@ -26,48 +21,28 @@
             <PrismicRichText :field="project.data.intro" wrapper="article" />
 
             <div class="icons">
-              <img
-                v-show="project.data.vue"
-                src="../assets/icons/vuejs.svg"
-                alt="Vue js" />
-              <img
-                v-show="project.data.html"
-                src="../assets/icons/html5.svg"
-                alt="HTML 5 icon" />
-              <img
-                v-show="project.data.css"
-                src="../assets/icons/css3-alt.svg"
-                alt="CSS 3 icon" />
-              <img
-                v-show="project.data.javascript"
-                src="../assets/icons/js.svg"
-                alt="Javascript icon" />
+              <img v-show="project.data.vue" src="../assets/icons/vuejs.svg" alt="Vue js" />
+              <img v-show="project.data.html" src="../assets/icons/html5.svg" alt="HTML 5 icon" />
+              <img v-show="project.data.css" src="../assets/icons/css3-alt.svg" alt="CSS 3 icon" />
+              <img v-show="project.data.javascript" src="../assets/icons/js.svg" alt="Javascript icon" />
 
-              <RouterLink
-                class="link"
-                :to="'/projecten/' + project.uid"
-                target="_self">
+              <RouterLink class="link" :to="'/projecten/' + project.uid" target="_self">
                 Meer informatie
               </RouterLink>
 
               <a :href="project.data.github_url" target="_blank">
-                <img
-                  v-show="project.data.github"
-                  src="../assets/icons/github.svg"
-                  alt="Javascript icon" />
+                <img v-show="project.data.github" src="../assets/icons/github.svg" alt="Javascript icon" />
               </a>
             </div>
           </div>
           <div class="project-img">
             <RouterLink :to="'/projecten/' + project.uid" target="_self">
-              <img
-                :src="
-                  project.data.cover_img.url.substring(
-                    0,
-                    project.data.cover_img.url.lastIndexOf('?')
-                  )
-                "
-                alt="Website Fox and Waterman" />
+              <img :src="
+                project.data.cover_img.url.substring(
+                  0,
+                  project.data.cover_img.url.lastIndexOf('?')
+                )
+              " alt="Website Fox and Waterman" />
             </RouterLink>
           </div>
         </div>
@@ -96,7 +71,6 @@ async function fetchData() {
   loadDone.value = true
 }
 fetchData()
-console.log(projecten)
 </script>
 
 <style lang="scss" scoped>
@@ -212,8 +186,7 @@ p {
 
   img[src*='svg'] {
     height: 2rem;
-    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg)
-      brightness(108%) contrast(101%);
+    filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(127deg) brightness(108%) contrast(101%);
   }
 }
 

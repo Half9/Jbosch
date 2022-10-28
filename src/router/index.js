@@ -22,7 +22,7 @@ export const routes = [
     component: NotFound,
   },
   {
-    path: '/formsucces',
+    path: '/succes',
     name: 'FormSucces',
     component: FormSucces,
   },

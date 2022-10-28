@@ -81,8 +81,6 @@ const components = defineSliceZoneComponents({
   plaatje: SliceImage,
   tekst: SliceText,
 })
-
-console.log(project)
 </script>
 
 <style lang="scss" scoped>
