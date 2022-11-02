@@ -8,7 +8,7 @@
         </div>
 
         <template v-if="loadDone && siteText.data">
-            <PrismicRichText :field="siteText.data.data.motivatiebrief" wrapper="main" />
+            <PrismicRichText :field="siteText.data.data.mijn_verhaal" wrapper="main" />
         </template>
     </div>
 </template>
@@ -22,10 +22,9 @@ const siteText = ref()
 const loadDone = ref(false)
 
 async function fetchData() {
-    const response = await useSinglePrismicDocument('motivatiebrief')
+    const response = await useSinglePrismicDocument('mijn_verhaal')
     siteText.value = response
     loadDone.value = true
-    console.log(siteText.value)
 }
 fetchData()
 </script>
@@ -36,7 +35,7 @@ main {
     margin-left: auto;
     margin-right: 1rem;
     position: relative;
-    z-index: 999;
+    z-index: 80;
 
     &:deep(h2) {
         margin-block: 2rem;

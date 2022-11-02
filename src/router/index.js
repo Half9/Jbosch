@@ -4,7 +4,7 @@ import Home from '@/views/HomeView.vue'
 import Projecten from '@/views/ProjectenView.vue'
 import NotFound from '@/views/NotFound.vue'
 import FormSucces from '@/views/SuccesFormSubmit.vue'
-import Motivatiebrief from '@/views/MotivatieBrief.vue'
+import MijnVerhaal from '@/views/MijnVerhaal.vue'
 
 export const routes = [
   {
@@ -18,9 +18,9 @@ export const routes = [
     component: Projecten,
   },
   {
-    path: '/motivatiebrief',
-    name: 'Motivatiebrief',
-    component: Motivatiebrief,
+    path: '/mijn-verhaal',
+    name: 'Mijn Verhaal',
+    component: MijnVerhaal,
   },
   {
     path: '/:path(.*)',
