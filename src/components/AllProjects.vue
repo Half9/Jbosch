@@ -12,7 +12,6 @@
 
       <template v-else>
         <div v-for="project in projecten.data" :key="project.uid" class="project">
-          <!-- <RouterLink :to="'/projecten/' + project.uid" target="_self"> -->
           <RouterLink :to="{ name: 'Projecten', params: { uid: project.uid } }" target="_self">
             <PrismicText :field="project.data.title" wrapper="h3" />
           </RouterLink>
@@ -38,10 +37,10 @@
           <div class="project-img">
             <RouterLink :to="'/projecten/' + project.uid" target="_self">
               <img :src="
-                project.data.cover_img.url.substring(
-                  0,
-                  project.data.cover_img.url.lastIndexOf('?')
-                )
+  project.data.cover_img.url.substring(
+    0,
+    project.data.cover_img.url.lastIndexOf('?')
+  )
               " alt="Website Fox and Waterman" />
             </RouterLink>
           </div>
